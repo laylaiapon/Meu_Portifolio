@@ -57,15 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById('form-contato').addEventListener('submit', function(e) {
-    // Pegando os valores inseridos pela pessoa
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const mensagem = document.getElementById('mensagem').value;
 
-    // Seu número do WhatsApp (apenas números)
+    // número do WhatsApp
     const numeroWhats = "5581983138716";
 
-    // Formatando o texto que vai chegar no seu WhatsApp
+    // Formatando o texto que vai chegar no WhatsApp
     const textoMensagem = `Olá Layla! Meu nome é *${nome}* (${email}).\n\n*Mensagem:* ${mensagem}`;
 
     // Codifica o texto para o formato URL padrão
@@ -75,7 +74,60 @@ document.getElementById('form-contato').addEventListener('submit', function(e) {
     window.open(linkZap, '_blank');
 });
 
+  //barra de rolagem 
+window.addEventListener('scroll', function() {
+  const header = document.querySelector('header');
+  // Se a rolagem passar de 50 pixels, adiciona a classe 'ativo', senão remove
+  if (window.scrollY > 50) {
+    header.classList.add('header-ativo');
+  } else {
+    header.classList.remove('header-ativo');
+  }
+});
 
+document.addEventListener("DOMContentLoaded", () => {
+  const elementoTexto = document.getElementById("troca-texto");
+  const palavras = ["Frontend", "Full Stack"];
+    let indicePalavra = 0;
 
+  function animarPalavra() {
+    const palavraAtual = palavras[indicePalavra];
+    elementoTexto.innerHTML = ""; // Limpa o texto anterior
 
+    // 1. Transforma a palavra em letras individuais envelopadas em um <span>
+    // Se for um espaço vazio, usamos um caractere especial para manter o espaçamento correto
+    palavraAtual.split("").forEach(letra => {
+      const span = document.createElement("span");
+      span.innerHTML = letra === " " ? "&nbsp;" : letra;
+      elementoTexto.appendChild(span);
+    });
 
+    const spans = elementoTexto.querySelectorAll("span");
+
+    // 2. Faz cada letra surgir uma após a outra (efeito cascata)
+    spans.forEach((span, index) => {
+      setTimeout(() => {
+        span.classList.add("visivel");
+      }, index * 80); // 80ms de atraso entre o surgimento de cada letra
+    });
+
+    // 3. Tempo total que a palavra fica na tela antes de sumir e ir para a próxima
+    // Espera o término da digitação + 2.5 segundos de leitura
+    const tempoDeEspera = (spans.length * 80) + 2500;
+
+    setTimeout(() => {
+      // Faz todas as letras sumirem juntas suavemente
+      spans.forEach(span => span.classList.remove("visivel"));
+
+      // Espera o efeito de sumir (400ms) e chama a próxima palavra
+      setTimeout(() => {
+        indicePalavra = (indicePalavra + 1) % palavras.length;
+        animarPalavra();
+      }, 400);
+
+    }, tempoDeEspera);
+  }
+
+  // Inicia a animação
+  animarPalavra();
+});
