@@ -1,0 +1,929 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+  --bg-color: #0b071e;           
+  --card-bg: #120d2b;            
+  --card-border: #231942;        
+  --text-main: #ffffff;          
+  --text-muted: #a29bfe;         
+  --tag-bg: rgba(130, 94, 242, 0.15); 
+  --tag-text: #a55eea;           
+  --btn-border: #3c2f6d;         
+  --btn-text-primary: #c44de4;   
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-family);
+  min-height: 100vh;
+  padding: 0; 
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column; 
+  width: 100%; 
+  margin: 0 !important; 
+}
+
+.section-header {
+  text-align: center; 
+  width: 100%;                  
+  margin-top: -120px !important; 
+  padding-top: 0 !important;
+   margin-bottom: 24px !important; 
+  position: relative;
+  z-index: 20; 
+}
+
+.cards-grid .section-header {
+  grid-column: 1 / -1; 
+  margin-bottom: 0; 
+}
+
+.section-title {
+  color: #ffffff; 
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.5rem; 
+  font-weight: 800; 
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: #706595; 
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: block; 
+  line-height: 1.4;
+  margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   ESTRUTURA E COMPONENTES DO CARD
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 40px 32px; 
+  width: 100%; 
+  justify-content: center; 
+  max-width: 1440px; 
+  margin: 0 auto !important; 
+  padding: 0px 4% 60px 4%; 
+  position: relative;
+  z-index: 5;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px; 
+  width: 100%;
+  max-width: 340px;   
+  justify-self: center; 
+  overflow: hidden;
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px); 
+  box-shadow: 0 20px 40px -10px rgba(165, 94, 234, 0.3); 
+}
+
+/* Container da Imagem */
+.card-image-container {
+  width: 100%;
+  height: 170px; 
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.card-content {
+  padding: 24px 20px; 
+}
+
+.card-title {
+  color: var(--text-main);
+  font-size: 1.25rem; 
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  color: var(--text-muted);
+  font-size: 0.88rem; 
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  font-family: monospace; 
+  font-size: 0.75rem; 
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(165, 94, 234, 0.2); 
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; 
+  text-decoration: none;
+  font-size: 0.85rem; 
+  font-weight: 600;
+  padding: 10px 14px; 
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn img {
+  width: 16px !important;
+  height: 16px !important;
+  object-fit: contain;
+}
+
+.icone-escuro {
+  filter: brightness(0) invert(1);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--btn-border);
+  flex: 1;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border-color: var(--text-muted);
+}
+
+.btn-primary {
+  background-color: rgba(196, 77, 228, 0.1);
+  color: var(--btn-text-primary);
+  border: 1px solid rgba(196, 77, 228, 0.3);
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background-color: rgba(196, 77, 228, 0.2);
+  border-color: var(--btn-text-primary);
+}
+
+.blue-icon { 
+  color: #2f81f7; 
+  font-size: 1.1rem; 
+}
+
+.green-icon { 
+  color: #2ea043; 
+  font-size: 1.1rem; 
+}
+
+.orange-icon { 
+  color: #f78166; 
+  font-size: 1.1rem; 
+}
+
+.skill-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.progress {
+  border-radius: 3px !important; 
+}
+
+.progress-bar {
+  transition: width 0.6s ease;
+}
+
+.bg-primary {
+  background-color: #2f50f7 !important; 
+}
+
+.bg-success {
+  background-color: #2ea03d !important; 
+}
+
+.custom-orange-bar {
+  background-color: #b32c2c !important; 
+}
+
+/* --- Restante dos estilos do container anterior (Mantenha igual) --- */
+:root {
+  --bg-color: #0f0d17;
+  --card-bg: #161b22;
+  --text-main: #ffffff;
+  --text-muted: #8b949e;
+  
+  --blue-color: #2f81f7;
+  --green-color: #2ea043;
+  --orange-color: #f78166;
+}
+
+.skills-section {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.skills-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.skills-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.skills-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 1px solid #30363d; 
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.skill-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.skill-percentage {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.blue-icon { color: var(--blue-color); }
+.green-icon { color: var(--green-color); }
+.orange-icon { color: var(--orange-color); }
+
+/* ==========================================================================
+   SEÇÃO: EXPERIÊNCIA & FORMAÇÃO
+   ========================================================================== */
+
+:root {
+    --res-bg-card: #130f22;       
+    --res-border: #2d1f47;        
+    --res-text-title: #ffffff;    
+    --res-text-p: #cbd5e1;       
+    --res-text-muted: #7c6a9c;    
+    --res-purple-badge: #a855f7;  
+    --res-purple-bg: rgba(168, 85, 247, 0.15); 
+    --res-purple-accent: #c084fc; 
+}
+
+.resume-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.resume-section .section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--res-text-title);
+    margin-bottom: 8px;
+}
+
+.resume-section .section-subtitle {
+    color: var(--res-text-muted);
+    font-size: 1rem;
+    margin-bottom: 50px;
+}
+
+.resume-section .timeline-container {
+    position: relative;
+    padding-left: 55px;
+    margin-top: 20px;
+}
+
+.resume-section .timeline-line {
+    position: absolute;
+    left: 16px;
+    top: 10px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--res-purple-accent) 0%, rgba(168, 85, 247, 0.4) 50%, transparent 100%);
+}
+
+.resume-section .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.resume-section .timeline-icon {
+    position: absolute;
+    left: -55px;
+    top: 5px;
+    width: 36px;
+    height: 36px;
+    background-color: #0b0f19;
+    border: 2px solid var(--res-purple-accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--res-purple-accent);
+    z-index: 2;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+}
+
+.resume-section .timeline-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.resume-section .timeline-card {
+    background-color: var(--res-bg-card);
+    border: 1px solid var(--res-border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    max-width: 750px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-section .timeline-card:hover {
+    border-color: rgba(168, 85, 247, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.1);
+}
+
+.resume-section .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border-bottom: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.resume-section .badge-education {
+    background-color: var(--res-purple-bg);
+    color: var(--res-purple-badge);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.resume-section .card-date {
+    color: var(--res-text-muted);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.resume-section .calendar-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.resume-section .card-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--res-text-title);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.resume-section .card-institution {
+    color: var(--res-purple-accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.resume-section .card-description {
+    color: var(--res-text-p);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.resume-section .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.resume-section .tag {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #94a3b8;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.resume-section .tag:hover {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #f3e8ff;
+    border-color: var(--res-purple-accent);
+}
+
+/* ==========================================================================
+   SEÇÃO FOOTER / CONTATO
+   ========================================================================== */
+.contato-footer {
+  background-color: var(--bg-color);
+  padding: 80px 4% 60px 4%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contato-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+}
+
+/* Lado Esquerdo - Textos */
+.contato-title {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.contato-description {
+  color: #a29bfe;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.contato-subdescription {
+  color: #706595;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.entre-contato-title {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Lista de Links Clavados */
+.lista-redes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.rede-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: rgba(18, 13, 43, 0.6);
+  border: 1px solid #1e1838;
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.rede-item:hover {
+  background-color: #120d2b;
+  border-color: #3c2f6d;
+  transform: translateX(4px);
+}
+
+.rede-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #5e528f;
+  transition: color 0.2s ease;
+}
+
+.rede-item:hover .rede-icon svg {
+  color: #c44de4;
+}
+
+.rede-textos {
+  display: flex;
+  flex-direction: column;
+}
+
+.rede-label {
+  color: #5e528f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rede-url {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Badge Verde de Disponibilidade */
+.badge-disponibilidade {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(16, 46, 34, 0.4);
+  border: 1px solid rgba(46, 117, 89, 0.3);
+  color: #4cd137;
+  font-family: monospace;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border-radius: 8px;
+}
+
+.ponto-verde {
+  width: 8px;
+  height: 8px;
+  background-color: #4cd137;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #4cd137;
+}
+
+/* Lado Direito - Caixa do Formulário */
+.contato-formulario-wrapper {
+  background-color: #120d2b;
+  border: 1px solid #1e1838;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.contato-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-grupo label {
+  color: #5e528f;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.form-grupo input,
+.form-grupo textarea {
+  background-color: #0b071e;
+  border: 1px solid #1e1838;
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-grupo input:focus,
+.form-grupo textarea:focus {
+  outline: none;
+  border-color: #e1e2e2;
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.2);
+}
+
+/* Botão Enviar Azul Estiloso */
+.btn-enviar {
+  background-color: #400e75;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+  margin-top: 10px;
+}
+
+.btn-enviar:hover {
+  background-color: #743dd2;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(74, 144, 226, 0.4);
+}
+
+.btn-enviar:active {
+  transform: translateY(0);
+}
+
+.send-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE PROGRESSIVA (A PARTIR DE 320px ATÉ TELAS MAIORES)
+   ========================================================================== */
+
+@media (min-width: 320px) {
+
+  /* --- 1. CONFIGURAÇÕES GLOBAIS E SEÇÃO DE CARDS --- */
+  .section-header {
+    margin-top: 0 !important; /* Desfaz o recuo negativo agressivo no mobile */
+    padding: 40px 16px 0 16px !important;
+  }
+
+  .section-title {
+    font-size: 1.8rem; /* Evita quebra de palavras em telas estreitas */
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr; /* Força uma coluna única no celular */
+    gap: 24px;
+    padding: 24px 16px 40px 16px;
+  }
+
+  .project-card {
+    max-width: 100%; /* Permite que o card se ajuste à largura total do celular */
+  }
+
+  /* --- 2. SEÇÃO DE HABILIDADES (SKILLS) --- */
+  .skills-section {
+    padding: 40px 16px;
+  }
+
+  .skills-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr; /* Lista os blocos de skills um abaixo do outro */
+    gap: 16px;
+  }
+
+  .skills-card {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  /* --- 3. SEÇÃO EXPERIÊNCIA & FORMAÇÃO (TIMELINE) --- */
+  .resume-section {
+    padding: 40px 16px;
+    margin: 20px auto;
+  }
+
+  .resume-section .section-title {
+    font-size: 1.8rem;
+  }
+
+  .resume-section .timeline-container {
+    padding-left: 35px; /* Reduz o recuo lateral para ganhar área útil */
+  }
+
+  .resume-section .timeline-line {
+    left: 11px; /* Realinha a linha vertical com o novo espaço */
+  }
+
+  .resume-section .timeline-icon {
+    left: -40px; /* Realinha as bolinhas da linha do tempo */
+    width: 26px;
+    height: 26px;
+  }
+
+  .resume-section .timeline-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .resume-section .timeline-card {
+    padding: 20px;
+  }
+
+  .resume-section .card-header {
+    flex-direction: column; /* Empilha o selo e a data no topo do card */
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .resume-section .card-title {
+    font-size: 1.2rem;
+  }
+
+  /* --- 4. SEÇÃO FOOTER / CONTATO --- */
+  .contato-footer {
+    padding: 40px 16px;
+  }
+
+  .contato-container {
+    grid-template-columns: 1fr; /* Junta o formulário e os textos em uma coluna */
+    gap: 40px;
+  }
+
+  .contato-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .contato-description,
+  .contato-subdescription,
+  .entre-contato-title {
+    text-align: center;
+  }
+
+  .badge-disponibilidade {
+    display: flex;
+    justify-content: center;
+    max-width: max-content;
+    margin: 0 auto; /* Centraliza o selo de disponibilidade */
+  }
+
+  .contato-formulario-wrapper {
+    padding: 24px 16px;
+  }
+
+  .form-linha {
+    grid-template-columns: 1fr; /* Inputs de Nome e E-mail ficam um embaixo do outro */
+    gap: 20px;
+  }
+}
+
+/* --- AJUSTES PARA COMPALIBILIDADE INTERMEDIÁRIA (Tablets / Telas de 600px a 767px) --- */
+@media (min-width: 600px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* Exibe em duas colunas se houver espaço */
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- RETORNO AO FLUXO ORIGINAL (A partir de 992px) --- */
+@media (min-width: 992px) {
+  .section-header {
+    margin-top: -120px !important; /* Devolve o efeito do design original no desktop */
+  }
+
+  .section-title,
+  .skills-header h2,
+  .resume-section .section-title {
+    font-size: 2.5rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 0px 4% 60px 4%;
+  }
+
+  .project-card {
+    max-width: 340px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .resume-section .timeline-container {
+    padding-left: 55px;
+  }
+
+  .resume-section .timeline-line {
+    left: 16px;
+  }
+
+  .resume-section .timeline-icon {
+    left: -55px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .resume-section .timeline-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .resume-section .card-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .contato-container {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+  }
+
+  .contato-title {
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .contato-description,
+  .contato-subdescription,
+  .entre-contato-title {
+    text-align: left;
+  }
+
+  .badge-disponibilidade {
+    margin: 0;
+  }
+
+  .form-linha {
+    grid-template-columns: 1fr 1fr;
+  }
+}

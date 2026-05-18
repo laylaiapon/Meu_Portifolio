@@ -1,0 +1,452 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+/*RESET E CONFIGURAÇÕES GERAIS*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  color: #fff;
+  font-family: "Poppins", "Arial", sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 50px;
+  z-index: 100;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #a855f7;
+}
+
+.navegacao-menu {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+.navegacao-menu a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: all 0.4s ease;
+}
+
+.navegacao-menu a:hover {
+  color: #b305ca;
+  text-shadow: 0 0 15px rgb(146, 8, 196);
+  letter-spacing: 5px;
+}
+
+/*BLOCO DA ESQUERDA*/
+.conteudo-principal {
+  position: relative;
+  width: 100%;
+}
+
+.tela-introducao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 0 5%;
+  position: relative;
+  width: 100%;
+}
+
+.sobre-esquerda {
+  flex: 1;
+  max-width: 35%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60%;
+}
+
+.destaque-sobre-esquerda .p-esquerda {
+  font-size: 1.6rem;
+  color: #a855f7;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.destaque-sobre-esquerda h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* ÍCONES SOCIAIS */
+.redes-sociais {
+  position: absolute;
+  bottom: 5%;
+  left: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 20;
+}
+
+.redes-sociais a {
+  color: #fff;
+  font-size: 24px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.redes-sociais a:hover {
+  color: #a855f7;
+}
+
+/*IMAGEM INTEGRADA) */
+.imagem {
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  height: 120vh;
+  transform: translateY(140px);
+}
+
+.minha-foto {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/*BLOCO DA DIREITA*/
+.sobre-direita {
+  flex: 1;
+  max-width: 35%;
+  text-align: left;
+  z-index: 10;
+  padding: 100px 5%;
+}
+
+.sobre-direita .p-direita {
+  font-size: 1.6rem;
+  color: #a855f7;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.sobre-direita .destaque-sobre-direita {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.s-direita,
+.sp-direita {
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.s-direita {
+  color: #c084fc;
+}
+
+.sp-direita {
+  font-size: 2.2rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SEGUNDA TELA (ESTILIZAÇÃO DO BLOCO SEGUNDA-TELA)
+   ========================================================================== */
+.segunda-tela {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.introducao-segunda-tela {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+  max-width: 45%;
+  position: relative;
+  z-index: 8;
+}
+
+.sobre-mim {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #a855f7;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sobre-mim-2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #eee9f4;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.sobre-mim-paragrafo {
+  font-size: 1.4rem;
+  color: #94a3b8;
+  font-weight: 500;
+  margin-top: 5px;
+  display: block;
+}
+
+.sm-texto {
+  color: #a855f7;
+}
+
+/* ==========================================================================
+   CLASSES DE ANIMAÇÃO PARA IMAGEM (JAVASCRIPT)
+   ========================================================================== */
+.efeito-explosao {
+  opacity: 0 !important;
+  filter: blur(12px) !important;
+  transform: scale(1.1) translateY(-5px) !important;
+  letter-spacing: 3px;
+}
+
+/* ESTADO IMAGEM: Quando o JavaScript detectar que rolou para a segunda tela, ele aplica essa classe */
+.destaque-imagem.na-esquerda {
+  left: 10%;
+  transform: translateX(0);
+  width: 20%;
+}
+
+.destaque-imagem {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+  pointer-events: none;
+  transition:
+    left 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ESTADO IMAGEM: Segunda Tela (Fica fixa na esquerda) */
+.destaque-imagem.na-esquerda {
+  position: fixed !important;
+  top: 0 !important;
+  left: 5% !important;
+  transform: translateX(0) !important;
+  width: 60% !important;
+}
+
+.secao-estatisticas {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  margin-top: 50px;
+  width: 100%;
+}
+
+/* Configuração individual de cada coluna (um, dois e tres) */
+.secao-estatisticas-um,
+.secao-estatisticas-dois,
+.secao-estatisticas-tres {
+  flex: 1;
+  min-width: max-content;
+}
+
+.estatistica-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.numero-destaque {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+}
+
+.legenda-destaque {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   CARROSSEL COM LOOPING INFINITO REAL
+   ========================================================================== */
+.minhas-tecnologias {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.minhas-tecnologias h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.minhas-tecnologias span {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.secao-carrossel {
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+  position: relative;
+}
+
+.carrossel-container {
+  display: flex;
+  width: max-content;
+}
+
+.carrossel-esteira {
+  display: flex;
+  align-items: center;
+  gap: 60px; 
+  padding-right: 60px;
+  animation: rolarTeclado 20s linear infinite;
+}
+
+.carrossel-esteira img {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.carrossel-esteira img:hover {
+  transform: scale(1.15);
+}
+
+/* Inverte a cor dos ícones do GitHub e Expo de preto para branco fosco */
+.carrossel-esteira img.icone-escuro {
+  filter: invert(1) opacity(0.8);
+}
+
+/* Animação que faz o movimento infinito contínuo */
+@keyframes rolarTeclado {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move exatamente metade da largura */
+  }
+}
+
+/* ==========================================================================
+   TERCEIRA TELA (ESTILIZAÇÃO DO BLOCO SEGUNDA-TELA)
+   ========================================================================== */
+
+.minhas-tecnologias {
+    background-color: #0000005c; 
+    border-top: 2px solid #a855f7;    
+    border-bottom: 2px solid #a855f7; 
+    border-left: none;             
+    border-right: none;
+    border-radius: 0;                 
+    padding: 10px 0;                 
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* MANTÉM A FOTO POR CIMA: */
+    margin-top: -60px;             
+    margin-bottom: 40px;
+    z-index: 1;                
+    box-shadow: 0 0 30px rgba(101, 16, 180, 0.15); 
+
+    /* ESTEIRA EM MOVIMENTO CONTÍNUO */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%);
+}
+.minhas-tecnologias h2 {
+    color: #ffffff;            
+    margin-bottom: 12px;
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: "Inter", "Poppins", sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+.minhas-tecnologias span {
+    font-family: "Inter", "Poppins", sans-serif;
+    font-weight: 600;
+    color: #a855f7;           
+    display: block;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    letter-spacing: 0.20em;
+    background: linear-gradient(to right, #c084fc, #a855f7);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.carrossel-container {
+    overflow: hidden;        
+    width: 100%;
+    padding: 2px 0;
+}
+
+/* Ajuste nos ícones para que os escuros (como GitHub e Expo) apareçam no fundo preto */
+.icone-escuro {
+    filter: invert(1) brightness(2); /* Transforma o ícone preto em branco para dar contraste */
+}
+
+.carrossel-esteira img {
+    margin: 0 2px;          
+    vertical-align: middle;
+    height: 60px;
+    
+}
+
+.icone-seta{
+    color: #eee9f4;
+}
+
